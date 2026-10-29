@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anti-Gravity Routine & Hypertrophy Planner</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        agCyan: {
+                            400: '#38bdf8',
+                            500: '#06b6d4',
+                            600: '#0891b2',
+                            glow: 'rgba(6, 182, 212, 0.4)'
+                        },
+                        agViolet: {
+                            400: '#a78bfa',
+                            500: '#8b5cf6',
+                            600: '#7c3aed',
+                            glow: 'rgba(139, 92, 246, 0.4)'
+                        },
+                        agSpace: {
+                            950: '#030712',
+                            900: '#0b0f19',
+                            800: '#111827',
+                            700: '#1f293d',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Space Grotesk', 'Inter', 'sans-serif'],
+                    },
+                    animation: {
+                        'float-slow': 'float 6s ease-in-out infinite',
+                        'float-delayed': 'float 6s ease-in-out 3s infinite',
+                        'pulse-glow': 'pulseGlow 3s infinite alternate',
+                    },
+                    keyframes: {
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0px)' },
+                            '50%': { transform: 'translateY(-8px)' },
+                        },
+                        pulseGlow: {
+                            '0%': { boxShadow: '0 0 15px rgba(6, 182, 212, 0.2)' },
+                            '100%': { boxShadow: '0 0 30px rgba(139, 92, 246, 0.5)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Space Grotesk & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #030712;
+            background-image: 
+                radial-gradient(at 0% 0%, rgba(6, 182, 212, 0.08) 0px, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(139, 92, 246, 0.08) 0px, transparent 50%);
+            background-attachment: fixed;
+        }
+
+        .font-space {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Glassmorphism Panels */
+        .ag-glass {
+            background: rgba(17, 24, 39, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .ag-glass-hover:hover {
+            border-color: rgba(6, 182, 212, 0.35);
+            box-shadow: 0 10px 30px -10px rgba(6, 182, 212, 0.25);
+        }
+
+        /* Neon Borders & Glows */
+        .neon-border-cyan {
+            box-shadow: 0 0 15px -3px rgba(6, 182, 212, 0.3);
+            border: 1px solid rgba(6, 182, 212, 0.4);
+        }
+
+        .neon-border-violet {
+            box-shadow: 0 0 15px -3px rgba(139, 92, 246, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.4);
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #030712;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #1f293d;
+            border-radius: 3px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #06b6d4;
+        }
+    </style>
+</head>
+<body class="text-slate-100 min-h-screen flex flex-col selection:bg-agCyan-500 selection:text-slate-950">
+
+    <!-- Ambient Grid Background -->
+    <div class="fixed inset-0 pointer-events-none z-0 opacity-20 bg-[radial-gradient(#1f293d_1px,transparent_1px)] [background-size:24px_24px]"></div>
+
+    <!-- Top Navigation Header -->
+    <header class="sticky top-0 z-40 ag-glass border-b border-slate-800/80 px-4 lg:px-8 py-3.5">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <div class="relative p-2.5 rounded-xl bg-slate-900 border border-agCyan-500/30 text-agCyan-400 shadow-[0_0_15px_rgba(6,182,212,0.25)] animate-float-slow">
+                    <i data-lucide="orbit" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <h1 class="text-lg font-bold font-space text-white tracking-wide flex items-center gap-2">
+                        ANTI-GRAVITY <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-agCyan-500/10 text-agCyan-400 border border-agCyan-500/30">v2.4</span>
+                    </h1>
+                    <p class="text-[11px] text-slate-400">Rotina & Nutrição de Alta Performance</p>
+                </div>
+            </div>
+
+            <!-- Gravity Core Ring (Header Progress) -->
+            <div class="hidden sm:flex items-center space-x-4 bg-slate-900/80 px-4 py-2 rounded-full border border-slate-800">
+                <span class="text-xs font-medium text-slate-400 font-space uppercase tracking-wider">Gravity Core:</span>
+                <div class="relative flex items-center justify-center">
+                    <svg class="w-8 h-8 transform -rotate-90">
+                        <circle cx="16" cy="16" r="12" stroke="currentColor" stroke-width="3" class="text-slate-800" fill="transparent"/>
+                        <circle id="header-circle-progress" cx="16" cy="16" r="12" stroke="currentColor" stroke-width="3" class="text-agCyan-400 transition-all duration-500" fill="transparent" stroke-dasharray="75.39" stroke-dashoffset="75.39" stroke-linecap="round"/>
+                    </svg>
+                    <span id="header-circle-text" class="absolute text-[10px] font-bold font-space text-agCyan-400">0%</span>
+                </div>
+            </div>
+
+            <!-- Reset Button -->
+            <button onclick="resetDayProgress()" class="flex items-center space-x-1.5 text-xs text-slate-400 hover:text-agCyan-400 bg-slate-900/80 hover:bg-slate-800 px-3.5 py-2 rounded-xl border border-slate-800 transition shadow-inner">
+                <i data-lucide="refresh-cw" class="w-3.5 h-3.5"></i>
+                <span class="hidden sm:inline font-space">Reiniciar Dia Atual</span>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="relative z-10 flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 space-y-8">
+
+        <!-- Banner Hero Anti-Gravity -->
+        <div class="relative overflow-hidden rounded-3xl ag-glass border border-agCyan-500/20 p-6 sm:p-8 shadow-2xl animate-pulse-glow">
+            <div class="relative z-10 max-w-2xl space-y-3">
+                <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-agCyan-500/10 text-agCyan-400 border border-agCyan-500/30">
+                    <i data-lucide="atom" class="w-3.5 h-3.5 mr-1.5 animate-spin text-agCyan-400" style="animation-duration: 8s;"></i>
+                    Modo Hipertrofia // Saída às 06:20 & Cardápio Mensal
+                </div>
+                <h2 class="text-2xl sm:text-4xl font-extrabold font-space text-white tracking-tight leading-tight">
+                    Sistema Tático Mensal Anti-Gravity
+                </h2>
+                <p class="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                    Sua rotina programada para os 30 dias do mês com variação de nutrientes (4 semanas rotativas). Saída de casa fixa às <strong class="text-agCyan-400">06:20</strong> para nunca atrasar!
+                </p>
+            </div>
+            <!-- Floating Decorative Orbs -->
+            <div class="absolute -right-12 -bottom-12 w-64 h-64 bg-agViolet-500/10 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute right-12 top-0 w-48 h-48 bg-agCyan-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        </div>
+
+        <!-- Dashboard Stats Grid -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <!-- Stat 1: Core Dynamic Widget -->
+            <div class="ag-glass p-4 rounded-2xl border border-slate-800 flex items-center space-x-4 animate-float-slow">
+                <div class="relative flex items-center justify-center p-3 bg-agCyan-500/10 border border-agCyan-500/30 text-agCyan-400 rounded-xl">
+                    <i data-lucide="zap" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-[11px] text-slate-400 font-space uppercase">Progresso do Dia</span>
+                    <div id="stat-core-text" class="text-xl font-bold font-space text-white">0% Concluído</div>
+                </div>
+            </div>
+
+            <!-- Stat 2: Deslocamento / Saída -->
+            <div class="ag-glass p-4 rounded-2xl border border-slate-800 flex items-center space-x-4 animate-float-delayed">
+                <div class="p-3 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl">
+                    <i data-lucide="navigation" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-[11px] text-slate-400 font-space uppercase">Saída de Casa</span>
+                    <div class="text-xl font-bold font-space text-amber-400">06:20 Imterpróvel</div>
+                </div>
+            </div>
+
+            <!-- Stat 3: Proteína -->
+            <div class="ag-glass p-4 rounded-2xl border border-slate-800 flex items-center space-x-4 animate-float-slow">
+                <div class="p-3 bg-agViolet-500/10 border border-agViolet-500/30 text-agViolet-400 rounded-xl">
+                    <i data-lucide="flame" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-[11px] text-slate-400 font-space uppercase">Meta Proteica</span>
+                    <div class="text-xl font-bold font-space text-white">~160g - 180g</div>
+                </div>
+            </div>
+
+            <!-- Stat 4: Sono -->
+            <div class="ag-glass p-4 rounded-2xl border border-slate-800 flex items-center space-x-4 animate-float-delayed">
+                <div class="p-3 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 rounded-xl">
+                    <i data-lucide="moon" class="w-6 h-6"></i>
+                </div>
+                <div>
+                    <span class="text-[11px] text-slate-400 font-space uppercase">Sono Anabólico</span>
+                    <div class="text-xl font-bold font-space text-white">22:30 Desconexão</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Seletor Mensal / Semanal -->
+        <div class="ag-glass p-4 rounded-2xl border border-agCyan-500/30 space-y-3">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                <div class="flex items-center space-x-2">
+                    <i data-lucide="calendar" class="w-5 h-5 text-agCyan-400"></i>
+                    <h3 class="font-bold font-space text-white text-sm sm:text-base">Seletor de Ciclo Mensal (30 Dias / 4 Semanas)</h3>
+                </div>
+                <!-- Week Selector Buttons -->
+                <div class="flex items-center space-x-2 text-xs font-space">
+                    <button onclick="selectWeek(1)" id="week-btn-1" class="week-btn px-3 py-1.5 rounded-xl bg-agCyan-500/20 text-agCyan-400 border border-agCyan-500/40 font-bold">Semana 1</button>
+                    <button onclick="selectWeek(2)" id="week-btn-2" class="week-btn px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 hover:text-white">Semana 2</button>
+                    <button onclick="selectWeek(3)" id="week-btn-3" class="week-btn px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 hover:text-white">Semana 3</button>
+                    <button onclick="selectWeek(4)" id="week-btn-4" class="week-btn px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 hover:text-white">Semana 4</button>
+                </div>
+            </div>
+
+            <!-- Days Grid Bar -->
+            <div class="grid grid-cols-7 sm:grid-cols-10 lg:grid-cols-15 gap-1.5 pt-2 border-t border-slate-800" id="month-days-container">
+                <!-- Days 1 to 30 will be generated here -->
+            </div>
+        </div>
+
+        <!-- Navigation Tabs -->
+        <div class="flex border-b border-slate-800 space-x-2 sm:space-x-4 overflow-x-auto pb-1 scrollbar-none">
+            <button onclick="switchTab('timeline')" id="tab-btn-timeline" class="tab-btn active border-b-2 border-agCyan-400 text-agCyan-400 font-space font-medium py-2.5 px-4 text-sm flex items-center space-x-2 whitespace-nowrap transition">
+                <i data-lucide="clock" class="w-4 h-4"></i>
+                <span>Cronograma Diário (Dia <span id="tab-selected-day">1</span>)</span>
+            </button>
+            <button onclick="switchTab('diet')" id="tab-btn-diet" class="tab-btn border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-space font-medium py-2.5 px-4 text-sm flex items-center space-x-2 whitespace-nowrap transition">
+                <i data-lucide="utensils" class="w-4 h-4"></i>
+                <span>Cardápio da Semana <span id="tab-selected-week">1</span></span>
+            </button>
+            <button onclick="switchTab('calculator')" id="tab-btn-calculator" class="tab-btn border-b-2 border-transparent text-slate-400 hover:text-slate-200 font-space font-medium py-2.5 px-4 text-sm flex items-center space-x-2 whitespace-nowrap transition">
+                <i data-lucide="cpu" class="w-4 h-4"></i>
+                <span>Calculadora & Meal Prep</span>
+            </button>
+        </div>
+
+        <!-- SEÇÃO 1: TIMELINE CRONOGRAMA -->
+        <section id="section-timeline" class="space-y-6">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+                <div>
+                    <h3 class="text-xl font-bold font-space text-white">Órbita do Dia <span id="current-day-label">1</span></h3>
+                    <p class="text-xs text-slate-400">Cronograma ajustado com <strong class="text-amber-400">saída impreterível de casa às 06:20</strong></p>
+                </div>
+                <!-- Filters -->
+                <div class="flex items-center space-x-1.5 bg-slate-900/90 p-1 rounded-xl border border-slate-800 text-xs font-space">
+                    <button onclick="filterTimeline('all')" class="filter-btn px-3 py-1.5 rounded-lg bg-slate-800 text-agCyan-400 font-medium">Todos</button>
+                    <button onclick="filterTimeline('refeicao')" class="filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Refeições</button>
+                    <button onclick="filterTimeline('aula')" class="filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Aulas/Trab</button>
+                    <button onclick="filterTimeline('treino')" class="filter-btn px-3 py-1.5 rounded-lg text-slate-400 hover:text-white">Treino</button>
+                </div>
+            </div>
+
+            <!-- Timeline Cards -->
+            <div id="timeline-container" class="space-y-4">
+                <!-- Dynamic Content generated by JS -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO 2: PLANO ALIMENTAR (DIET MENSAL) -->
+        <section id="section-diet" class="space-y-6 hidden">
+            <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-2">
+                <div>
+                    <h3 class="text-xl font-bold font-space text-white">Cardápio da <span id="diet-week-title">Semana 1</span> (Rotativo)</h3>
+                    <p class="text-xs text-slate-400">Variação de carnes, peixes, fontes de carboidratos e praticidade para transporte</p>
+                </div>
+                <span class="text-xs font-space px-3 py-1 rounded-full bg-agViolet-500/10 text-agViolet-400 border border-agViolet-500/30 font-semibold">
+                    Hipertrofia Bulking
+                </span>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="diet-cards-container">
+                <!-- Dynamic Content generated by JS -->
+            </div>
+        </section>
+
+        <!-- SEÇÃO 3: CALCULADORA DE MACROS & MEAL PREP -->
+        <section id="section-calculator" class="space-y-6 hidden">
+            <div>
+                <h3 class="text-xl font-bold font-space text-white">Calculadora & Preparação Antecipada (Meal Prep)</h3>
+                <p class="text-xs text-slate-400">Organize suas marmitas no domingo e mantenha a consistência sem surpresas</p>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <!-- Calculator Panel -->
+                <div class="ag-glass border border-slate-800 rounded-3xl p-6 space-y-4 shadow-xl">
+                    <h4 class="text-base font-bold font-space text-white flex items-center space-x-2">
+                        <i data-lucide="calculator" class="w-5 h-5 text-agCyan-400"></i>
+                        <span>Estimador de Macros (Bulking)</span>
+                    </h4>
+
+                    <div class="space-y-3 text-xs">
+                        <div>
+                            <label class="block font-medium text-slate-300 mb-1">Peso Atual (kg)</label>
+                            <input type="number" id="calc-weight" value="70" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-agCyan-400 font-space">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-300 mb-1">Altura (cm)</label>
+                            <input type="number" id="calc-height" value="175" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-agCyan-400 font-space">
+                        </div>
+                        <div>
+                            <label class="block font-medium text-slate-300 mb-1">Nível de Atividade</label>
+                            <select id="calc-activity" class="w-full bg-slate-900 border border-slate-700/80 rounded-xl px-3.5 py-2.5 text-white focus:outline-none focus:border-agCyan-400 font-space">
+                                <option value="1.4">Moderado (Aulas + Treino)</option>
+                                <option value="1.6" selected>Intenso (Rotina 05:45 - 22:30 + Treino + Trabajo)</option>
+                                <option value="1.8">Extremo (Alta carga física)</option>
+                            </select>
+                        </div>
+                        <button onclick="calculateMacros()" class="w-full bg-gradient-to-r from-agCyan-600 to-agViolet-600 hover:from-agCyan-500 hover:to-agViolet-500 text-white font-space font-semibold py-3 rounded-xl text-xs transition shadow-lg shadow-agCyan-500/20">
+                            Calcular Parâmetros
+                        </button>
+                    </div>
+
+                    <!-- Macro Output -->
+                    <div class="bg-slate-950/80 rounded-2xl p-4 border border-slate-800 space-y-3 mt-4">
+                        <div class="text-[11px] font-space text-slate-400 uppercase">Superávit Calórico Estimado:</div>
+                        <div class="flex justify-between items-baseline">
+                            <span class="text-xs text-slate-300">Calorias / Dia:</span>
+                            <span id="res-calories" class="text-xl font-bold font-space text-agCyan-400">~2800 kcal</span>
+                        </div>
+                        <div class="grid grid-cols-3 gap-2 pt-2 border-t border-slate-800/80 text-center">
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-[10px] text-slate-400 font-space">Proteínas</span>
+                                <span id="res-protein" class="text-xs font-bold font-space text-white">154g</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-[10px] text-slate-400 font-space">Carbos</span>
+                                <span id="res-carbs" class="text-xs font-bold font-space text-white">380g</span>
+                            </div>
+                            <div class="bg-slate-900 p-2 rounded-xl border border-slate-800">
+                                <span class="block text-[10px] text-slate-400 font-space">Gorduras</span>
+                                <span id="res-fats" class="text-xs font-bold font-space text-white">70g</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Strategic Sci-Fi Cards -->
+                <div class="lg:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div class="ag-glass border border-slate-800 p-5 rounded-3xl space-y-2 animate-float-slow">
+                        <div class="p-2.5 bg-agCyan-500/10 border border-agCyan-500/30 text-agCyan-400 rounded-xl w-fit">
+                            <i data-lucide="boxes" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold font-space text-white text-sm">Meal Prep de Domingo</h5>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Cozinhe os carboidratos (arroz/batata/mandioca) e as proteínas (frango/carne moída) para 3 a 4 dias. Congele metade e deixe a outra metade na geladeira em potes herméticos.
+                        </p>
+                    </div>
+
+                    <div class="ag-glass border border-slate-800 p-5 rounded-3xl space-y-2 animate-float-delayed">
+                        <div class="p-2.5 bg-amber-500/10 border border-amber-500/30 text-amber-400 rounded-xl w-fit">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold font-space text-white text-sm">Organização da Noite (22:00)</h5>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Às 22:00, coloque as marmitas das 09:45, 12:15 e 15:45 dentro da bolsa térmica com gelo gel. Deixe a roupa da saída das 06:20 pronta.
+                        </p>
+                    </div>
+
+                    <div class="ag-glass border border-slate-800 p-5 rounded-3xl space-y-2 animate-float-slow">
+                        <div class="p-2.5 bg-agViolet-500/10 border border-agViolet-500/30 text-agViolet-400 rounded-xl w-fit">
+                            <i data-lucide="dumbbell" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold font-space text-white text-sm">Foco no Treino (17:45)</h5>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Você sairá direto das aulas (17:30) para a academia. Leve a roupa de treino na mochila para não perder tempo voltando em casa.
+                        </p>
+                    </div>
+
+                    <div class="ag-glass border border-slate-800 p-5 rounded-3xl space-y-2 animate-float-delayed">
+                        <div class="p-2.5 bg-indigo-500/10 border border-indigo-500/30 text-indigo-400 rounded-xl w-fit">
+                            <i data-lucide="moon" class="w-5 h-5"></i>
+                        </div>
+                        <h5 class="font-bold font-space text-white text-sm">Higiene do Sono (22:30)</h5>
+                        <p class="text-xs text-slate-400 leading-relaxed">
+                            Acordar às 05:45 exige estar dormindo às 22:30 para ter 7h15m de sono reparador. Evite telas de celular após as 22:00.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal para Detalhes do Bloco -->
+    <div id="item-modal" class="fixed inset-0 bg-black/80 backdrop-blur-md z-50 hidden flex items-center justify-center p-4">
+        <div class="ag-glass border border-agCyan-500/30 rounded-3xl max-w-lg w-full p-6 space-y-4 relative shadow-2xl">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white p-1 rounded-lg hover:bg-slate-800">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+            <div id="modal-content">
+                <!-- Conteúdo Dinâmico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Application Script -->
+    <script>
+        // Exact User Schedule Request Data (Updated Departure: 06:20)
+        const scheduleData = [
+            {
+                id: 'ag-1',
+                time: '05:45',
+                title: 'Despertar, Higiene & Água Primária',
+                category: 'refeicao',
+                typeText: 'Rotina Matinal',
+                icon: 'sun',
+                badgeColor: 'bg-agCyan-500/10 text-agCyan-400 border-agCyan-500/30',
+                description: 'Despertar imediato às 05:45. Beba 500ml de água e realize sua higiene pessoal.',
+                details: 'Beba 500ml de água para reativar os rins e acelerar a absorção do café da manhã.'
+            },
+            {
+                id: 'ag-2',
+                time: '06:00',
+                title: 'Refeição 1: Café da Manhã Rápido & Prático',
+                category: 'refeicao',
+                typeText: 'Refeição 1',
+                icon: 'coffee',
+                badgeColor: 'bg-agCyan-500/10 text-agCyan-400 border-agCyan-500/30',
+                description: 'Refeição rápida de alta densidade para consumir em 15 minutos antes de sair.',
+                details: 'Consulte a guia de cardápio da semana selecionada para ver as opções pré-preparadas.'
+            },
+            {
+                id: 'ag-3',
+                time: '06:20',
+                title: 'Saída Impreterível de Casa / Deslocamento',
+                category: 'aula',
+                typeText: 'Saída Fixo 06:20',
+                icon: 'navigation',
+                badgeColor: 'bg-amber-500/10 text-amber-400 border-amber-500/30',
+                description: 'Horário limite de saída de casa com mochila, garrafa d\'água e bolsa térmica de marmitas.',
+                details: 'Verifique se pegou a marmita do intervalo (09:45), almoço (12:15) e pré-treino (15:45).'
+            },
+            {
+                id: 'ag-4',
+                time: '07:30 - 09:45',
+                title: 'Bloco 1 de Aulas',
+                category: 'aula',
+                typeText: 'Aulas / Estudo',
+                icon: 'book-open',
+                badgeColor: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+                description: 'Primeira etapa de aulas. Foco nos estudos e hidratação regular na carteira.',
+                details: 'Mantenha garrafa de água à mão. Consuma pelo menos 500ml.'
+            },
+            {
+                id: 'ag-5',
+                time: '09:45 - 10:00',
+                title: 'Intervalo 1 + Refeição 2: Lanche Anabólico Prático',
+                category: 'refeicao',
+                typeText: 'Refeição 2 - Lanche',
+                icon: 'apple',
+                badgeColor: 'bg-agCyan-500/10 text-agCyan-400 border-agCyan-500/30',
+                description: 'Pausa de 15 minutos. Ingestão rápida da marmita fria/shake.',
+                details: 'Verifique a opção na aba Cardápio da semana ativa.'
+            },
+            {
+                id: 'ag-6',
+                time: '10:00 - 12:15',
+                title: 'Bloco 2 de Aulas',
+                category: 'aula',
+                typeText: 'Aulas / Estudo',
+                icon: 'book-open',
+                badgeColor: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+                description: 'Segunda etapa acadêmica da manhã.',
+                details: 'Mantenha a postura e o foco.'
+            },
+            {
+                id: 'ag-7',
+                time: '12:15 - 13:30',
+                title: 'Refeição 3: Almoço Principal',
+                category: 'refeicao',
+                typeText: 'Refeição 3 - Almoço',
+                icon: 'utensils',
+                badgeColor: 'bg-agCyan-500/10 text-agCyan-400 border-agCyan-500/30',
+                description: 'Almoço denso com proteína, carboidratos e vegetais (esquentar na faculdade/restaurante).',
+                details: 'Carboidratos + Proteína de qualidade ajustadas na aba de nutrição da semana.'
+            },
+            {
+                id: 'ag-8',
+                time: '13:30 - 15:45',
+                title: 'Bloco 3 de Aulas',
+                category: 'aula',
+                typeText: 'Aulas / Estudo',
+                icon: 'book-open',
+                badgeColor: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+                description: 'Início do período vespertino de aulas.',
+                details: 'Continue bebendo água para não ficar desidratado antes do treino.'
+            },
+            {
+                id: 'ag-9',
+                time: '15:45 - 16:00',
+                title: 'Intervalo 2 + Refeição 4: Pré-Treino',
+                category: 'refeicao',
+                typeText: 'Refeição 4 - Pré-Treino',
+                icon: 'zap',
+                badgeColor: 'bg-agViolet-500/10 text-agViolet-400 border-agViolet-500/30',
+                description: 'Carboidrato de rápida assimilação + proteína para ter energia máxima no treino das 17:45.',
+                details: 'Excelente momento para consumi-lo com tranquilidade antes do último bloco.'
+            },
+            {
+                id: 'ag-10',
+                time: '16:00 - 17:30',
+                title: 'Bloco 4 de Aulas',
+                category: 'aula',
+                typeText: 'Aulas / Estudo',
+                icon: 'book-open',
+                badgeColor: 'bg-blue-500/10 text-blue-400 border-blue-500/30',
+                description: 'Finalização do dia de aulas. Troque de roupa se necessário para ir direto ao treino.',
+                details: 'Assim que a aula terminar às 17:30, dirija-se imediatamente à academia.'
+            },
+            {
+                id: 'ag-11',
+                time: '17:45 - 19:15',
+                title: 'Academia / Treino de Hipertrofia (90min)',
+                category: 'treino',
+                typeText: 'Treino de Força',
+                icon: 'dumbbell',
+                badgeColor: 'bg-red-500/10 text-red-400 border-red-500/30',
+                description: 'Sessão de musculação focada em hipertrofia e progressão de carga.',
+                details: 'Consuma pelo menos 1 Litro de água durante a sessão.'
+            },
+            {
+                id: 'ag-12',
+                time: '19:30 - 21:00',
+                title: 'Bloco de Trabalho Focado (1h30min)',
+                category: 'aula',
+                typeText: 'Trabalho Focado',
+                icon: 'briefcase',
+                badgeColor: 'bg-purple-500/10 text-purple-400 border-purple-500/30',
+                description: '1 hora e meia de produção focada no trabalho sem distrações.',
+                details: 'Sessão contínua de trabalho produtivo.'
+            },
+            {
+                id: 'ag-13',
+                time: '21:15',
+                title: 'Refeição 5: Jantar Pós-Treino',
+                category: 'refeicao',
+                typeText: 'Refeição 5 - Jantar',
+                icon: 'utensils',
+                badgeColor: 'bg-agCyan-500/10 text-agCyan-400 border-agCyan-500/30',
+                description: 'Refeição completa para recomposição do glicogênio e regeneração muscular.',
+                details: 'Verifique as fontes de carboidrato e proteína da semana na aba Nutrição.'
+            },
+            {
+                id: 'ag-14',
+                time: '22:00',
+                title: 'Refeição 6: Ceia & Organização do Dia Seguinte',
+                category: 'refeicao',
+                typeText: 'Refeição 6 - Ceia & Prep',
+                icon: 'boxes',
+                badgeColor: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
+                description: 'Consuma a ceia leve e coloque as marmitas do dia seguinte na bolsa térmica.',
+                details: 'Deixe sua roupa de sair pré-separada para agilizar às 05:45 da manhã.'
+            },
+            {
+                id: 'ag-15',
+                time: '22:30',
+                title: 'Sono Anabólico & Desconexão',
+                category: 'aula',
+                typeText: 'Recuperação Total',
+                icon: 'moon',
+                badgeColor: 'bg-indigo-500/10 text-indigo-400 border-indigo-500/30',
+                description: 'Apague as luzes e desligue as telas para garantir 7h15m de descanso contínuo.',
+                details: 'O sono reparador é essencial para o ganho muscular e disposição diária.'
+            }
+        ];
+
+        // Monthly Rotating Diet Data (4 Weeks Variation)
+        const weeklyDiets = {
+            1: [
+                {
+                    title: '06:00 - Refeição 1: Café da Manhã Rápido',
+                    time: '06:00', calories: '~520 kcal', protein: '30g Proteína', icon: 'coffee',
+                    items: ['3 Ovos mexidos com azeite', '2 Fatias de pão integral', '1 Banana fatiada com 20g de Aveia'],
+                    tip: 'Pronto em 10 minutos. Ideal para quem sai às 06:20.'
+                },
+                {
+                    title: '09:45 - Refeição 2: Lanche Frio (Marmita 1)',
+                    time: '09:45', calories: '~340 kcal', protein: '25g Proteína', icon: 'apple',
+                    items: ['150g Iogurt Grego / Natural', '1 Scoop (30g) de Whey Protein', '25g de Aveia em flocos'],
+                    tip: 'Basta misturar em um pote térmico e comer de colher no intervalo.'
+                },
+                {
+                    title: '12:15 - Refeição 3: Almoço Clássico',
+                    time: '12:15', calories: '~700 kcal', protein: '45g Proteína', icon: 'utensils',
+                    items: ['160g de Peito de Frango grelhado', '200g de Arroz Branco ou Integral', '100g de Feijão preto/carioca', 'Salada de alface e tomate com azeite'],
+                    tip: 'Base sólida de hipertrofia com frango e arroz.'
+                },
+                {
+                    title: '15:45 - Refeição 4: Pré-Treino de Aula',
+                    time: '15:45', calories: '~380 kcal', protein: '24g Proteína', icon: 'zap',
+                    items: ['Sanduíche de pão integral com frango desfiado e requeijão light', '1 Maçã'],
+                    tip: 'Fácil de carregar na bolsa sem estragar.'
+                },
+                {
+                    title: '21:15 - Refeição 5: Jantar Pós-Treino',
+                    time: '21:15', calories: '~650 kcal', protein: '42g Proteína', icon: 'utensils',
+                    items: ['160g de Carne moída (Patinho)', '220g de Batata Doce assada ou cozida', 'Brócolis no vapor'],
+                    tip: 'A batata doce fornece carboidrato de excelente qualidade para pós-treino.'
+                },
+                {
+                    title: '22:00 - Refeição 6: Ceia Anabólica',
+                    time: '22:00', calories: '~260 kcal', protein: '18g Proteína', icon: 'moon',
+                    items: ['2 Ovos cozidos', '1/4 de Abacate com pitada de sal'],
+                    tip: 'Digestão lenta e gorduras saudáveis para passar a noite.'
+                }
+            ],
+            2: [
+                {
+                    title: '06:00 - Refeição 1: Tapioca Proteica Rápida',
+                    time: '06:00', calories: '~540 kcal', protein: '32g Proteína', icon: 'coffee',
+                    items: ['Tapioca (60g de massa) recheada com 3 ovos e queijo cotage', '1 Copo de suco de laranja natural ou fruta'],
+                    tip: 'Rápida digestão e energia imediata.'
+                },
+                {
+                    title: '09:45 - Refeição 2: Shake Proteico de Mochila',
+                    time: '09:45', calories: '~360 kcal', protein: '28g Proteína', icon: 'apple',
+                    items: ['Shake com 30g de Whey Protein + 30g de Farinha de Aveia + 1 colher de Pasta de Amendoim'],
+                    tip: 'Misture com água gelada na hora do intervalo de 15 min.'
+                },
+                {
+                    title: '12:15 - Refeição 3: Almoço Bovino',
+                    time: '12:15', calories: '~720 kcal', protein: '46g Proteína', icon: 'utensils',
+                    items: ['160g de Tiras de Carne (Patinho/Alcatra)', '220g de Mandioca/Aipim cozido', 'Salada verde com azeite'],
+                    tip: 'A mandioca é um excelente carboidrato denso para ganho de massa.'
+                },
+                {
+                    title: '15:45 - Refeição 4: Pré-Treino Doce',
+                    time: '15:45', calories: '~390 kcal', protein: '22g Proteína', icon: 'zap',
+                    items: ['2 Bananas amassadas com 30g de Whey Protein e colher de mel'],
+                    tip: 'Pico de energia rápido para arrebentar no treino das 17:45.'
+                },
+                {
+                    title: '21:15 - Refeição 5: Jantar Macarrão Pós-Treino',
+                    time: '21:15', calories: '~680 kcal', protein: '44g Proteína', icon: 'utensils',
+                    items: ['180g de Macarrão (molho de tomate natural)', '160g de Peito de Frango desfiado'],
+                    tip: 'Macarrão repõe o glicogênio muscular rapidamente após a musculação.'
+                },
+                {
+                    title: '22:00 - Refeição 6: Ceia Anabólica',
+                    time: '22:00', calories: '~270 kcal', protein: '20g Proteína', icon: 'moon',
+                    items: ['Iogurt Natural com 15g de Castanhas de Caju / Pará'],
+                    tip: 'Gorduras boas para suporte hormonal noturno.'
+                }
+            ],
+            3: [
+                {
+                    title: '06:00 - Refeição 1: Panqueca de Aveia e Banana',
+                    time: '06:00', calories: '~530 kcal', protein: '28g Proteína', icon: 'coffee',
+                    items: ['Panqueca: 2 Ovos + 40g de Aveia + 1 Banana amassada', 'Canela a gosto'],
+                    tip: 'Pode deixar a massa pronta na geladeira na noite anterior.'
+                },
+                {
+                    title: '09:45 - Refeição 2: Marmita de Atum e Batata',
+                    time: '09:45', calories: '~350 kcal', protein: '30g Proteína', icon: 'apple',
+                    items: ['1 Lata de Atum em água', '150g de Batata doce em cubos assada'],
+                    tip: 'Opção salgada muito prática para marmita fria.'
+                },
+                {
+                    title: '12:15 - Refeição 3: Almoço Suíno Magro',
+                    time: '12:15', calories: '~710 kcal', protein: '45g Proteína', icon: 'utensils',
+                    items: ['160g de Lombo ou Filet Suíno magro', '200g de Arroz Integral', '100g de Feijão', 'Salada variada'],
+                    tip: 'Carne suína magra tem alto teor de tiamina e proteína.'
+                },
+                {
+                    title: '15:45 - Refeição 4: Pré-Treino Prático',
+                    time: '15:45', calories: '~370 kcal', protein: '23g Proteína', icon: 'zap',
+                    items: ['2 Fatias de Pão de Forma com 2 Ovos cozidos fatiados + Requeijão'],
+                    tip: 'Simples, barato e eficiente.'
+                },
+                {
+                    title: '21:15 - Refeição 5: Jantar de Peixe / Frango',
+                    time: '21:15', calories: '~640 kcal', protein: '42g Proteína', icon: 'utensils',
+                    items: ['180g de Filé de Tilápia ou Frango', '220g de Purê de Batata Inglesa com azeite'],
+                    tip: 'Purê de batata é de facílima digestão para o jantar tardio.'
+                },
+                {
+                    title: '22:00 - Refeição 6: Ceia Noturna',
+                    time: '22:00', calories: '~250 kcal', protein: '18g Proteína', icon: 'moon',
+                    items: ['Omelete simples de 2 Ovos com orégano e azeite'],
+                    tip: 'Leve para não pesar o estômago antes de dormir.'
+                }
+            ],
+            4: [
+                {
+                    title: '06:00 - Refeição 1: Ovos Mexidos & Torrada Dupla',
+                    time: '06:00', calories: '~550 kcal', protein: '31g Proteína', icon: 'coffee',
+                    items: ['3 Ovos inteiros', '2 Torradas de pão integral com requeijão', '1 Maçã ou Mamão'],
+                    tip: 'Garante energia imediata antes de sair às 06:20.'
+                },
+                {
+                    title: '09:45 - Refeição 2: Overnight Oats (Aveia Dormida)',
+                    time: '09:45', calories: '~360 kcal', protein: '26g Proteína', icon: 'apple',
+                    items: ['Aveia (40g) hidratada no leite/iogurte durante a noite + 1 scoop de Whey + Frutas vermelhas ou banana'],
+                    tip: 'Prepare no pote de vidro na noite anterior.'
+                },
+                {
+                    title: '12:15 - Refeição 3: Almoço Frango & Batata',
+                    time: '12:15', calories: '~730 kcal', protein: '48g Proteína', icon: 'utensils',
+                    items: ['180g de Peito de Frango grelhado', '250g de Batata Inglesa assada com alecrim', 'Salada e azeite'],
+                    tip: 'Refeição de alta absorção para meio do dia.'
+                },
+                {
+                    title: '15:45 - Refeição 4: Pré-Treino Anabólico',
+                    time: '15:45', calories: '~380 kcal', protein: '25g Proteína', icon: 'zap',
+                    items: ['1 Tapioca com frango desfiado (50g frango + requeijão)'],
+                    tip: 'Carboidrato simples de tapioca com proteína para treinar forte.'
+                },
+                {
+                    title: '21:15 - Refeição 5: Jantar Carne & Arroz',
+                    time: '21:15', calories: '~670 kcal', protein: '44g Proteína', icon: 'utensils',
+                    items: ['160g de Patinho moído', '200g de Arroz branco com cenoura ralada', 'Legumes cozidos'],
+                    tip: 'Refeição pós-treino nutritiva e saborosa.'
+                },
+                {
+                    title: '22:00 - Refeição 6: Ceia de Geladeira',
+                    time: '22:00', calories: '~260 kcal', protein: '20g Proteína', icon: 'moon',
+                    items: ['1 Scoop de Caseína ou Whey com 1 colher de Pasta de Amendoim em pouca água (Creme)'],
+                    tip: 'Forma um creme saboroso e protéico de lenta absorção.'
+                }
+            ]
+        };
+
+        // State Store
+        let currentSelectedDay = parseInt(localStorage.getItem('antigravity_active_day')) || 1;
+        let currentSelectedWeek = Math.ceil(currentSelectedDay / 7);
+        if (currentSelectedWeek > 4) currentSelectedWeek = 4;
+
+        let completedItems = JSON.parse(localStorage.getItem('antigravity_checks_multi')) || {};
+
+        // Initialization
+        document.addEventListener('DOMContentLoaded', () => {
+            renderMonthGrid();
+            selectDay(currentSelectedDay);
+            calculateMacros();
+            lucide.createIcons();
+        });
+
+        // Render Days 1 to 30 Selector
+        function renderMonthGrid() {
+            const container = document.getElementById('month-days-container');
+            container.innerHTML = '';
+
+            for (let day = 1; day <= 30; day++) {
+                const dayWeek = Math.ceil(day / 7) > 4 ? 4 : Math.ceil(day / 7);
+                const dayKey = `day_${day}`;
+                const dayChecks = completedItems[dayKey] || {};
+                const checkedCount = Object.keys(dayChecks).filter(k => dayChecks[k]).length;
+                const isComplete = checkedCount >= scheduleData.length;
+                const isCurrent = day === currentSelectedDay;
+
+                const btn = document.createElement('button');
+                btn.onclick = () => selectDay(day);
+                btn.className = `p-1.5 sm:p-2 rounded-xl text-center font-space transition border flex flex-col items-center justify-center ${
+                    isCurrent 
+                    ? 'bg-agCyan-500 text-slate-950 font-bold border-agCyan-400 shadow-[0_0_12px_rgba(6,182,212,0.6)]' 
+                    : isComplete 
+                    ? 'bg-emerald-500/20 text-emerald-400 border-emerald-500/40' 
+                    : 'bg-slate-900/80 text-slate-300 border-slate-800 hover:border-slate-700'
+                }`;
+
+                btn.innerHTML = `
+                    <span class="text-[9px] uppercase opacity-75">D${day}</span>
+                    <span class="text-xs font-bold">${checkedCount}/${scheduleData.length}</span>
+                `;
+
+                container.appendChild(btn);
+            }
+        }
+
+        // Select Day
+        function selectDay(day) {
+            currentSelectedDay = day;
+            currentSelectedWeek = Math.ceil(day / 7) > 4 ? 4 : Math.ceil(day / 7);
+            localStorage.setItem('antigravity_active_day', day);
+
+            // Update UI elements
+            document.getElementById('tab-selected-day').innerText = day;
+            document.getElementById('current-day-label').innerText = day;
+            document.getElementById('tab-selected-week').innerText = currentSelectedWeek;
+            document.getElementById('diet-week-title').innerText = `Semana ${currentSelectedWeek}`;
+
+            // Highlight week button
+            for (let w = 1; w <= 4; w++) {
+                const wBtn = document.getElementById(`week-btn-${w}`);
+                if (wBtn) {
+                    if (w === currentSelectedWeek) {
+                        wBtn.className = 'week-btn px-3 py-1.5 rounded-xl bg-agCyan-500/20 text-agCyan-400 border border-agCyan-500/40 font-bold';
+                    } else {
+                        wBtn.className = 'week-btn px-3 py-1.5 rounded-xl bg-slate-900 text-slate-400 border border-slate-800 hover:text-white';
+                    }
+                }
+            }
+
+            renderMonthGrid();
+            renderTimeline('all');
+            renderDietCards();
+            updateProgress();
+        }
+
+        // Select Week directly
+        function selectWeek(weekNum) {
+            const targetDay = (weekNum - 1) * 7 + 1;
+            selectDay(targetDay);
+        }
+
+        // Render Timeline Schedule
+        function renderTimeline(filterCategory = 'all') {
+            const container = document.getElementById('timeline-container');
+            container.innerHTML = '';
+
+            const dayKey = `day_${currentSelectedDay}`;
+            const activeDayChecks = completedItems[dayKey] || {};
+
+            const filteredData = filterCategory === 'all' 
+                ? scheduleData 
+                : scheduleData.filter(item => item.category === filterCategory);
+
+            filteredData.forEach(item => {
+                const isChecked = !!activeDayChecks[item.id];
+
+                const card = document.createElement('div');
+                card.className = `ag-glass ag-glass-hover rounded-2xl p-4 sm:p-5 transition-all duration-300 flex items-start space-x-4 border ${
+                    isChecked 
+                    ? 'opacity-50 border-slate-800' 
+                    : item.time === '06:20' 
+                    ? 'border-amber-500/50 bg-amber-500/5' 
+                    : 'border-slate-800/80'
+                }`;
+
+                card.innerHTML = `
+                    <button onclick="toggleCheck('${item.id}')" class="mt-1 flex-shrink-0 w-6 h-6 rounded-lg border flex items-center justify-center transition ${
+                        isChecked 
+                        ? 'bg-agCyan-500 border-agCyan-500 text-slate-950 shadow-[0_0_10px_rgba(6,182,212,0.5)]' 
+                        : 'border-slate-700 hover:border-agCyan-400 text-transparent'
+                    }">
+                        <i data-lucide="check" class="w-4 h-4 stroke-[3]"></i>
+                    </button>
+
+                    <div class="flex-1 min-w-0 space-y-1.5">
+                        <div class="flex flex-wrap items-center justify-between gap-2">
+                            <span class="text-xs font-space font-semibold text-agCyan-400 flex items-center">
+                                <i data-lucide="clock" class="w-3.5 h-3.5 mr-1"></i>
+                                ${item.time}
+                            </span>
+                            <span class="text-[10px] font-space font-bold px-2.5 py-0.5 rounded-full border ${item.badgeColor}">
+                                ${item.typeText}
+                            </span>
+                        </div>
+
+                        <h4 class="text-sm sm:text-base font-bold font-space ${isChecked ? 'line-through text-slate-500' : 'text-white'}">
+                            ${item.title}
+                        </h4>
+
+                        <p class="text-xs text-slate-300 leading-relaxed">
+                            ${item.description}
+                        </p>
+
+                        <div class="pt-1">
+                            <button onclick="openModal('${item.id}')" class="text-xs text-agCyan-400 hover:text-agCyan-300 font-space font-medium inline-flex items-center space-x-1">
+                                <span>Ver detalhes</span>
+                                <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                            </button>
+                        </div>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+
+            lucide.createIcons();
+        }
+
+        // Render Diet Cards based on Current Selected Week
+        function renderDietCards() {
+            const container = document.getElementById('diet-cards-container');
+            container.innerHTML = '';
+
+            const currentWeekDiet = weeklyDiets[currentSelectedWeek] || weeklyDiets[1];
+
+            currentWeekDiet.forEach(plan => {
+                const card = document.createElement('div');
+                card.className = 'ag-glass ag-glass-hover border border-slate-800/80 rounded-3xl p-5 flex flex-col justify-between space-y-4 shadow-xl animate-float-slow';
+
+                const itemsList = plan.items.map(i => `<li class="flex items-start space-x-2 text-xs text-slate-300"><i data-lucide="check-circle2" class="w-3.5 h-3.5 text-agCyan-400 flex-shrink-0 mt-0.5"></i><span>${i}</span></li>`).join('');
+
+                card.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="flex justify-between items-start">
+                            <div class="p-2.5 bg-agCyan-500/10 border border-agCyan-500/30 text-agCyan-400 rounded-xl">
+                                <i data-lucide="${plan.icon}" class="w-5 h-5"></i>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs font-bold font-space text-agCyan-400 block">${plan.calories}</span>
+                                <span class="text-[10px] font-space text-slate-400 block">${plan.protein}</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <span class="text-[10px] text-slate-400 font-space">${plan.time}</span>
+                            <h4 class="text-sm font-bold font-space text-white">${plan.title}</h4>
+                        </div>
+
+                        <ul class="space-y-2 pt-2 border-t border-slate-800">
+                            ${itemsList}
+                        </ul>
+                    </div>
+
+                    <div class="bg-slate-950/80 p-3 rounded-2xl border border-slate-800 text-[11px] text-slate-400 flex items-start space-x-2">
+                        <i data-lucide="sparkles" class="w-4 h-4 text-agViolet-400 flex-shrink-0 mt-0.5"></i>
+                        <span>${plan.tip}</span>
+                    </div>
+                `;
+
+                container.appendChild(card);
+            });
+            lucide.createIcons();
+        }
+
+        // Toggle Item Check for active day
+        function toggleCheck(id) {
+            const dayKey = `day_${currentSelectedDay}`;
+            if (!completedItems[dayKey]) completedItems[dayKey] = {};
+
+            completedItems[dayKey][id] = !completedItems[dayKey][id];
+            localStorage.setItem('antigravity_checks_multi', JSON.stringify(completedItems));
+            
+            const activeFilterBtn = document.querySelector('.filter-btn.bg-slate-800');
+            const currentFilter = activeFilterBtn ? activeFilterBtn.textContent.toLowerCase() : 'todos';
+
+            let filterCode = 'all';
+            if (currentFilter.includes('refei')) filterCode = 'refeicao';
+            if (currentFilter.includes('aula')) filterCode = 'aula';
+            if (currentFilter.includes('treino')) filterCode = 'treino';
+
+            renderTimeline(filterCode);
+            renderMonthGrid();
+            updateProgress();
+        }
+
+        // Update Progress Ring
+        function updateProgress() {
+            const dayKey = `day_${currentSelectedDay}`;
+            const activeDayChecks = completedItems[dayKey] || {};
+            
+            const total = scheduleData.length;
+            const checkedCount = Object.keys(activeDayChecks).filter(k => activeDayChecks[k]).length;
+            const percentage = Math.round((checkedCount / total) * 100);
+
+            const circumference = 75.39;
+            const offset = circumference - (percentage / 100) * circumference;
+
+            const circle = document.getElementById('header-circle-progress');
+            if (circle) circle.style.strokeDashoffset = offset;
+
+            document.getElementById('header-circle-text').innerText = `${percentage}%`;
+            document.getElementById('stat-core-text').innerText = `${percentage}% Concluído`;
+        }
+
+        // Filter Schedule
+        function filterTimeline(category) {
+            const buttons = document.querySelectorAll('.filter-btn');
+            buttons.forEach(btn => {
+                btn.classList.remove('bg-slate-800', 'text-agCyan-400', 'font-medium');
+                btn.classList.add('text-slate-400');
+            });
+
+            event.target.classList.add('bg-slate-800', 'text-agCyan-400', 'font-medium');
+            event.target.classList.remove('text-slate-400');
+
+            renderTimeline(category);
+        }
+
+        // Switch Navigation Tabs
+        function switchTab(tabName) {
+            document.getElementById('section-timeline').classList.add('hidden');
+            document.getElementById('section-diet').classList.add('hidden');
+            document.getElementById('section-calculator').classList.add('hidden');
+
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('border-agCyan-400', 'text-agCyan-400');
+                btn.classList.add('border-transparent', 'text-slate-400');
+            });
+
+            if (tabName === 'timeline') {
+                document.getElementById('section-timeline').classList.remove('hidden');
+                document.getElementById('tab-btn-timeline').classList.add('border-agCyan-400', 'text-agCyan-400');
+            } else if (tabName === 'diet') {
+                document.getElementById('section-diet').classList.remove('hidden');
+                document.getElementById('tab-btn-diet').classList.add('border-agCyan-400', 'text-agCyan-400');
+            } else if (tabName === 'calculator') {
+                document.getElementById('section-calculator').classList.remove('hidden');
+                document.getElementById('tab-btn-calculator').classList.add('border-agCyan-400', 'text-agCyan-400');
+            }
+        }
+
+        // Reset Current Day Progress
+        function resetDayProgress() {
+            if (confirm(`Deseja reiniciar todas as marcações do Dia ${currentSelectedDay}?`)) {
+                const dayKey = `day_${currentSelectedDay}`;
+                delete completedItems[dayKey];
+                localStorage.setItem('antigravity_checks_multi', JSON.stringify(completedItems));
+                renderTimeline('all');
+                renderMonthGrid();
+                updateProgress();
+            }
+        }
+
+        // Open Detail Modal
+        function openModal(id) {
+            const item = scheduleData.find(s => s.id === id);
+            if (!item) return;
+
+            const modalContent = document.getElementById('modal-content');
+            modalContent.innerHTML = `
+                <div class="flex items-center space-x-3 mb-3">
+                    <div class="p-2.5 bg-agCyan-500/10 border border-agCyan-500/30 text-agCyan-400 rounded-xl">
+                        <i data-lucide="${item.icon}" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <span class="text-xs font-space font-semibold text-agCyan-400">${item.time}</span>
+                        <h3 class="text-base font-bold font-space text-white">${item.title}</h3>
+                    </div>
+                </div>
+
+                <div class="space-y-3 pt-3 border-t border-slate-800 text-xs">
+                    <div>
+                        <h4 class="font-space font-semibold text-slate-300 uppercase mb-1">Descrição:</h4>
+                        <p class="text-slate-400 leading-relaxed">${item.description}</p>
+                    </div>
+
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800 space-y-1">
+                        <h4 class="font-space font-semibold text-agCyan-400 flex items-center">
+                            <i data-lucide="info" class="w-3.5 h-3.5 mr-1.5"></i> Instrução para o Dia ${currentSelectedDay}:
+                        </h4>
+                        <p class="text-slate-300 leading-relaxed">${item.details}</p>
+                    </div>
+                </div>
+
+                <div class="pt-4 flex justify-end">
+                    <button onclick="closeModal()" class="px-4 py-2 bg-slate-800 hover:bg-slate-700 text-white text-xs font-space font-semibold rounded-xl transition">
+                        Fechar
+                    </button>
+                </div>
+            `;
+
+            document.getElementById('item-modal').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        function closeModal() {
+            document.getElementById('item-modal').classList.add('hidden');
+        }
+
+        // Macro Calculator Logic
+        function calculateMacros() {
+            const weight = parseFloat(document.getElementById('calc-weight').value) || 70;
+            const height = parseFloat(document.getElementById('calc-height').value) || 175;
+            const activity = parseFloat(document.getElementById('calc-activity').value) || 1.6;
+
+            const bmr = 88.362 + (13.397 * weight) + (4.799 * height) - (5.677 * 20);
+            const tdee = bmr * activity;
+            const bulkingCalories = Math.round(tdee + 350);
+
+            const proteinGrams = Math.round(weight * 2.2);
+            const fatGrams = Math.round(weight * 1.0);
+            const carbCal = bulkingCalories - ((proteinGrams * 4) + (fatGrams * 9));
+            const carbGrams = Math.round(carbCal / 4);
+
+            document.getElementById('res-calories').innerText = `~${bulkingCalories} kcal`;
+            document.getElementById('res-protein').innerText = `${proteinGrams}g`;
+            document.getElementById('res-carbs').innerText = `${carbGrams}g`;
+            document.getElementById('res-fats').innerText = `${fatGrams}g`;
+        }
+    </script>
+</body>
+</html>
